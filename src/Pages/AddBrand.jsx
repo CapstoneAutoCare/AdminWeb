@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
+import {
+    Cascader,
+    DatePicker,
+    Form,
+    Input,
+    InputNumber,
+    Mentions,
+    Select,
+    TreeSelect,
+} from 'antd';
 const AddBrand = () => {
     const [open, setOpen] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
@@ -19,6 +29,25 @@ const AddBrand = () => {
         console.log('Clicked cancel button');
         setOpen(false);
     };
+    const { RangePicker } = DatePicker;
+    const formItemLayout = {
+        labelCol: {
+            xs: {
+                span: 24,
+            },
+            sm: {
+                span: 6,
+            },
+        },
+        wrapperCol: {
+            xs: {
+                span: 24,
+            },
+            sm: {
+                span: 14,
+            },
+        },
+    };
     return (
         <>
             <Button style={{ marginBottom: '10px' }} onClick={showModal}>
@@ -28,10 +57,84 @@ const AddBrand = () => {
                 title="Add New"
                 open={open}
                 onOk={handleOk}
-                confirmLoading={confirmLoading}
                 onCancel={handleCancel}
             >
-                <p>{modalText}</p>
+                <Form
+                    {...formItemLayout}
+                    variant="filled"
+                    style={{
+                        maxWidth: 600,
+                    }}
+                >
+                    <Form.Item
+                        label="Input"
+                        name="Input"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input!',
+                            },
+                        ]}
+                    >
+                        <Input />
+                    </Form.Item>
+
+                    <Form.Item
+                        label="InputNumber"
+                        name="InputNumber"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input!',
+                            },
+                        ]}
+                    >
+                        <InputNumber
+                            style={{
+                                width: '100%',
+                            }}
+                        />
+                    </Form.Item>
+
+                    <Form.Item
+                        label="TextArea"
+                        name="TextArea"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input!',
+                            },
+                        ]}
+                    >
+                        <Input.TextArea />
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Mentions"
+                        name="Mentions"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input!',
+                            },
+                        ]}
+                    >
+                        <Mentions />
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Select"
+                        name="Select"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input!',
+                            },
+                        ]}
+                    >
+                        <Select />
+                    </Form.Item>
+                </Form>
             </Modal>
         </>
     );
