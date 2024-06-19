@@ -3,10 +3,12 @@ import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Sort, Context
 
 import { ordersData, contextMenuItems, ordersGrid } from '../Data/dummy';
 import { Header } from '../Components'
+import AddBrand from './AddBrand';
 const Orders = () => {
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <Header category="Page" title="Vehicle Brand" />
+      <AddBrand />
       <GridComponent
         id="gridcomp"
         dataSource={ordersData}
